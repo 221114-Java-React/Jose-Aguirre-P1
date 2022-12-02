@@ -18,7 +18,7 @@ public class Router {
         ErsUserDao ers_userDao = new ErsUserDao();
         UserService userService = new UserService(ers_userDao);
         ErsUserHandler ersUserHandler = new ErsUserHandler(userService, mapper);
-        AuthHandlers authHandlers = new AuthHandlers(userService, mapper);
+        AuthHandlers authHandlers = new AuthHandlers(userService, tokenService, mapper);
 
         app.routes(() -> {
             path("/ersUsers", () -> {
