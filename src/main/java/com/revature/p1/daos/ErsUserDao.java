@@ -48,7 +48,7 @@ public class ErsUserDao implements CrudDAO<ErsUser>{
 
             while (rs.next()) {
                 ErsUser currentUser = new ErsUser(rs.getString("user_id"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
-                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role")));// Make role roleId
+                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role_id")));// Make role roleId
                 ersUser.add(currentUser);
             }
         } catch (SQLException e) {
@@ -107,7 +107,7 @@ public class ErsUserDao implements CrudDAO<ErsUser>{
 
             while (rs.next()) {
                 ErsUser currentUser = new ErsUser(rs.getString("user_id"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
-                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role")));
+                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role_id")));
                 ersUsers.add(currentUser);
             }
         } catch (SQLException e) {

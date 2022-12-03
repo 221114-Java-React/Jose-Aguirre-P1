@@ -23,15 +23,11 @@ public class ErsUserHandler {
     private ObjectMapper mapper;
     private final static Logger logger = LoggerFactory.getLogger(ErsUser.class);
 
-    public ErsUserHandler(UserService userService, ObjectMapper mapper) {
-        this.userService = userService;
-        this.mapper = mapper;
-    }
-
-    public void UserHandler(UserService userService, TokenService tokenService, ObjectMapper mapper) {
+    public ErsUserHandler(UserService userService, TokenService tokenService, ObjectMapper mapper) {
         this.userService = userService;
         this.tokenService = tokenService;
         this.mapper = mapper;
+
     }
 
     public void signup(Context ctx) throws IOException {
@@ -73,8 +69,8 @@ public class ErsUserHandler {
             if (principal == null) throw new InvalidAuthException("Invalid token");
             if (!principal.getRole().equals(Role.ADMIN)) throw new InvalidAuthException("You are not authorized to do this");
 
-            List<ErsUser> ersUsers = userService.getAllUsers();
-            ctx.json(ersUsers);
+            List<ErsUser> users = userService.getAllUsers();
+            ctx.json(users);
         } catch (InvalidAuthException e) {
             ctx.status(401);
             ctx.json(e.getMessage());
