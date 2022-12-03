@@ -34,6 +34,13 @@ public class ErsUserHandler {
         NewUserRequest req = mapper.readValue(ctx.req.getInputStream(), NewUserRequest.class);
 
         try {
+            String token = ctx.req.getHeader("authorization");
+            if (token == null || token.isEmpty()) throw new InvalidAuthException("You are not signed in");
+
+            Principal principal = tokenService.extractRequesterDetails(token);
+            if (principal == null) throw new InvalidAuthException("Invalid token");
+            if (!principal.getRole().equals(Role.ADMIN)) throw new InvalidAuthException("You are not authorized to do this");
+
             logger.info("Attempting to signup...");
 
             ErsUser createdUser;
@@ -50,7 +57,10 @@ public class ErsUserHandler {
 
             ctx.status(201);
             ctx.json("User created in Data Base");
-            logger.info("Signup attempt successful...");
+            logger.info("Signup attempt successful!");
+        }catch (InvalidAuthException e) {
+            ctx.status(401);
+            ctx.json(e.getMessage());
         } catch (InvalidUserException e) {
             ctx.status(403);
             ctx.json(e.getMessage());
