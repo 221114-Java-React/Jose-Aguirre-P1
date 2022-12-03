@@ -37,7 +37,8 @@ public class AuthHandlers {
             logger.info("Login successful...");
         } catch (InvalidAuthException e) {
             ctx.status(401);
-            ctx.json(e);
+            ctx.json(e.getMessage());
+            logger.info("Login Did Not Work");
         }
     }
 }

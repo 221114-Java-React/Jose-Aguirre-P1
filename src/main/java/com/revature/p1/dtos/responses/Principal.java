@@ -3,18 +3,34 @@ package com.revature.p1.dtos.responses;
 import com.revature.p1.models.Role;
 
 public class Principal {
+    private String s;
     private String id;
-    private String username;
+    private String userName;
     private Role role;
 
     public Principal() {
         super();
     }
 
-    public Principal(String id, String username, Role role) {
+    public Principal(String id, String userName, Role role) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
         this.role = role;
+    }
+
+    public Principal(String id, String userName, Role role, String s) {
+        this.id = id;
+        this.userName = userName;
+        this.role = role;
+        this.s = s;
+    }
+
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
     }
 
     public String getId() {
@@ -25,12 +41,12 @@ public class Principal {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Role getRole() {
@@ -44,8 +60,9 @@ public class Principal {
     @Override
     public String toString() {
         return "Principal{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
+                "s='" + s + '\'' +
+                ", id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
                 ", role=" + role +
                 '}';
     }

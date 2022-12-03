@@ -27,7 +27,7 @@ public class UserService {
     public Principal login(NewLoginRequest req) {
         ErsUser validUser = ErsUserDao.getUserByUsernameAndPassword(req.getUserName(), req.getPassword());
         if (validUser == null) throw new com.revature.p1.utils.custom_exceptions.InvalidAuthException("Invalid username or password");
-        return new Principal(validUser.getUser_id(), validUser.getUserName(), validUser.getRole());
+        return new Principal(validUser.getUser_id(), validUser.getUsername(), validUser.getRole(),"");
     }
 
     public List<ErsUser> getAllUsers(){

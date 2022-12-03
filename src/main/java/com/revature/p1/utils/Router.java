@@ -13,7 +13,7 @@ public class Router {
     public static void router(Javalin app) {
         ObjectMapper mapper = new ObjectMapper();
         JwtConfig jwtConfig = new JwtConfig();
-        TokenService tokenService = new TokenService();
+        TokenService tokenService = new TokenService(jwtConfig);
 
         ErsUserDao ers_userDao = new ErsUserDao();
         UserService userService = new UserService(ers_userDao);

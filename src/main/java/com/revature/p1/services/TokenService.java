@@ -12,12 +12,14 @@ import java.util.Date;
 public class TokenService {
     private JwtConfig jwtConfig;
 
-    public TokenService() {
-        super();
-    }
 
     public TokenService(JwtConfig jwtConfig) {
         this.jwtConfig = jwtConfig;
+    }
+
+    public TokenService() {
+        super();
+
     }
 
     public String generateToken(Principal subject) {
@@ -27,7 +29,7 @@ public class TokenService {
                 .setIssuer("p1")
                 .setIssuedAt(new Date(now))
                 .setExpiration(new Date(now + jwtConfig.getExpiration()))
-                .setSubject(subject.getUsername())
+                .setSubject(subject.getUserName())
                 .claim("role", subject.getRole())
                 .signWith(jwtConfig.getSigAlg(), jwtConfig.getSigningKey());
 

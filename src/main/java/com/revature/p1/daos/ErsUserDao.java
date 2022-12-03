@@ -15,9 +15,9 @@ public class ErsUserDao implements CrudDAO<ErsUser>{
     @Override
     public void save(ErsUser obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("insert into ers_users (user_id, userName, email, password, givenName, surName, role_id) values (?, ?, ?, ?, ?, ?, ?::role)");
+            PreparedStatement ps = con.prepareStatement("insert into ers_users (user_id, username, email, password, givenname, surname, role_id) values (?, ?, ?, ?, ?, ?, ?::role)");
             ps.setString(1, obj.getUser_id());
-            ps.setString(2, obj.getUserName());
+            ps.setString(2, obj.getUsername());
             ps.setString(3, obj.getEmail());
             ps.setString(4, obj.getPassword());
             ps.setString(5, obj.getGivenName());
@@ -47,8 +47,8 @@ public class ErsUserDao implements CrudDAO<ErsUser>{
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                ErsUser currentUser = new ErsUser(rs.getString("userId"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
-                        rs.getString("givenName"), rs.getString("surName"), rs.getString("isActive"), Role.valueOf(rs.getString("role")));
+                ErsUser currentUser = new ErsUser(rs.getString("user_id"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
+                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role")));// Make role roleId
                 ersUser.add(currentUser);
             }
         } catch (SQLException e) {
@@ -81,16 +81,16 @@ public class ErsUserDao implements CrudDAO<ErsUser>{
         return null;
     }
     public static ErsUser getUserByUsernameAndPassword(String userName, String password) {
-        ErsUser ersUser = null;
+         ErsUser ersUser = null;
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM ERS_USERS WHERE userName = ? AND password = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM P1.ERS_USERS WHERE username = ? AND password = ?");
             ps.setString(1, userName);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                ErsUser currentUser = new ErsUser(rs.getString("userId"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
-                        rs.getString("givenName"), rs.getString("surName"), rs.getString("isActive"), Role.valueOf(rs.getString("role")));
+                ersUser = new ErsUser(rs.getString("user_id"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
+                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,8 +106,8 @@ public class ErsUserDao implements CrudDAO<ErsUser>{
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                ErsUser currentUser = new ErsUser(rs.getString("userId"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
-                        rs.getString("givenName"), rs.getString("surName"), rs.getString("isActive"), Role.valueOf(rs.getString("role")));
+                ErsUser currentUser = new ErsUser(rs.getString("user_id"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
+                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role")));
                 ersUsers.add(currentUser);
             }
         } catch (SQLException e) {

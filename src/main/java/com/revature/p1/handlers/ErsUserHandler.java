@@ -52,12 +52,12 @@ public class ErsUserHandler {
                 } else throw new InvalidUserException("Username is already taken");
             } else throw new InvalidUserException("Username needs to be 8 - 20 characters long");
 
-            ctx.status(201); // CREATED
-            ctx.json(createdUser.getUser_id());
+            ctx.status(201);
+            ctx.json("User created in Data Base");
             logger.info("Signup attempt successful...");
         } catch (InvalidUserException e) {
-            ctx.status(403); // FORBIDDEN
-            ctx.json(e);
+            ctx.status(403);
+            ctx.json(e.getMessage());
             logger.info("Signup attempt unsuccessful...");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -77,7 +77,7 @@ public class ErsUserHandler {
             ctx.json(ersUsers);
         } catch (InvalidAuthException e) {
             ctx.status(401);
-            ctx.json(e);
+            ctx.json(e.getMessage());
         }
     }
 
@@ -95,7 +95,7 @@ public class ErsUserHandler {
             ctx.json(ersUsers);
         } catch (InvalidAuthException e) {
             ctx.status(401);
-            ctx.json(e);
+            ctx.json(e.getMessage());
         }
     }
 }
