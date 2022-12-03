@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338707cb-a447-4522-a4a2-cf05253a01c3" name="Changes" comment="Working Adding users">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/daos/ErsUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/daos/ErsUserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/dtos/responses/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/dtos/responses/Principal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/handlers/AuthHandlers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/handlers/AuthHandlers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/handlers/ErsUserHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/handlers/ErsUserHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/models/ErsUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/models/ErsUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/services/TokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/services/TokenService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/p1/utils/Router.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/p1/utils/Router.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

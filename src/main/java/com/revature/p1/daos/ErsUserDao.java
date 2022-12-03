@@ -90,7 +90,7 @@ public class ErsUserDao implements CrudDAO<ErsUser>{
 
             if (rs.next()) {
                 ersUser = new ErsUser(rs.getString("user_id"), rs.getString("username"),rs.getString("email"), rs.getString("password"),
-                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role")));
+                        rs.getString("givenName"), rs.getString("surName"), Role.valueOf(rs.getString("role_id")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
